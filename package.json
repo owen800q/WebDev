@@ -1,0 +1,30 @@
+{
+  "name": "WebDev",
+  "version": "1.0.0",
+  "description": "LuKa's private webdev repo with code and wiki documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kajlund/WebDev.git"
+  },
+  "keywords": [
+    "web",
+    "development",
+    "javascript",
+    "css",
+    "html",
+    "node"
+  ],
+  "author": "LuKa <kaj.lund@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kajlund/WebDev/issues"
+  },
+  "homepage": "https://github.com/kajlund/WebDev",
+  "devDependencies": {
+    "live-server": "^0.8.1"
+  }
+}
