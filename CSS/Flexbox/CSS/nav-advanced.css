@@ -1,0 +1,47 @@
+/* Pull in shared styles */
+@import url('reset.css');
+@import url('accessibility.css');
+@import url('layout.css');
+@import url('typography.css');
+@import url('masthead.css');
+@import url('nav-base.css');
+
+/* Styles for Advanced Menu */
+
+.advanced-nav li a {
+    width: 100%; /* anchor should expand to max inside li container */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.icon {
+    flex: 0 0 1.5em; /* grow, shrink, width */
+    font-size: 1.8em;
+}
+
+.button-text {
+    font-size: 1.8em;
+}
+
+.button-text span {
+    display: block; /* display on its own row */
+    font-size: 40%;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+@media screen and (min-width: 30em) {
+    .advanced-nav ul {
+        display: flex;
+        /* justify-content: flex-end;   -  to align menu-items to right */
+        justify-content: center;  /* - to center items in flex container */
+        /*justify-content: space-around;  eql dist space between item boxes */
+        /*justify-content: space-between;  like space-around -left & right sides */
+        flex-wrap: wrap; /* to wrap instead of squishing on small screens */
+    }
+    .advanced-nav li {
+        display: flex; /* so that children fill the li containers */
+        flex: 1 0 12em; /* grow, shrink, width
+        if available width less than 12em then wrap */
+    }
+}
