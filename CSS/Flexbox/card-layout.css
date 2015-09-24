@@ -1,0 +1,38 @@
+/*
+The primary stylesheet for the Flexbox Cards Demo web page. This sheet pulls in all the components in order of appearance.
+*/
+
+@import url('CSS/reset.css');
+@import url('CSS/accessibility.css');
+@import url('CSS/layout.css');
+@import url('CSS/typography.css');
+@import url('CSS/masthead.css');
+@import url('CSS/card-styles.css');
+
+.card {
+    display: flex; /* So card anchor fills container */
+}
+
+@media screen and (min-width: 40em) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: -1em;
+    }
+    .card {
+        width: calc(50% - .5em);
+        margin-bottom: 1em;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .cards {
+        margin-top: inherit;
+    }
+    .card {
+        /*flex: 0 1 calc(33% - 1em); width option same but more backwords comp*/
+        width: calc(33% - 1em);
+        margin-bottom: 2em;
+    }
+}    

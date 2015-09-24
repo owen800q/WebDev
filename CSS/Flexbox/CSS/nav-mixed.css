@@ -5,5 +5,21 @@
 @import url('typography.css');
 @import url('masthead.css');
 @import url('nav-base.css');
+@import url('nav-multi-level.css');
+@import url('nav-social.css');
 
 /* Styles for Mixed Menu */
+.nav-mixed .multi-level-nav ul {
+    /*background: tomato;*/
+}
+
+.nav-mixed .social-menu ul {
+    /*background: aqua;*/
+}
+
+.nav-mixed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: hsl(0, 0%, 15%);
+}
