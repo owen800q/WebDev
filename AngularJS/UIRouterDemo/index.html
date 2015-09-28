@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UI-Router demo</title>
+    <meta name="description" content="UI-Router demo"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="app.module">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2>UI-Router Demo</h2>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation">
+                    <a ui-sref="home">Home</a>
+                </li>
+                <li role="presentation">
+                    <a ui-sref="books">Books</a>
+                </li>
+                <li role="presentation">
+                    <a ui-sref="nostate">NoState</a>
+                </li>
+            </ul>
+        </div>    
+    </div>
+    
+    <div ui-view></div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/data.service.js"></script>
+    <script src="app/home.controller.js"></script>
+    <script src="app/book.list.controller.js"></script>
+    <script src="app/book.detail.controller.js"></script>
+</body>
+
+</html>

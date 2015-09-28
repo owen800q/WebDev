@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="list-group">
+        <a ui-sref="bmdetail({bookId: book.id})" class="list-group-item" ng-repeat="book in vm.books">
+            {{book.title}}
+            <i class="fa fa-chevron-right pull-right" style="font-size: 1.4em;"></i>
+        </a>
+    </div>
+</div>    
