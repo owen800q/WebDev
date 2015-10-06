@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AngularFire Demo App</title>
+    <meta name="description" content="Demo using Firebase with AngularFire"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-route.js"></script>
+    
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+</head>
+
+<body ng-app="app">
+    <div ng-view></div>    
+
+    <script src="app/app.module.js"></script>
+    <script src="app/home.controller.js"></script>
+</body>
+
+</html>
