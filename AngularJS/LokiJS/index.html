@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Loki Demo App</title>
+    <meta name="description" content="LokiJS demo"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+</head>
+
+<body ng-app="app">
+    <div class="page-header">
+        <h1>LokiJS Demo</h1>
+    </div>
+    
+    <div ui-view class="container"></div>
+    
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-ui-router.js"></script>
+    <script src="lib/lokijs.js"></script>
+    <script src="lib/loki-angular.js"></script>
+    
+    <script src="app/app.module.js"></script>
+    <script src="app/home.controller.js"></script>
+</body>
+
+</html>
