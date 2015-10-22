@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Tabs</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--style type="text/css">
+        .tabs {
+
+        }
+        .tab-buttons {
+            overflow: auto;
+        }
+        .tab-buttons button {
+            background: #fff;
+            color: #337ab7;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            transition:all 300ms ease-in;
+        }
+        .tab-buttons button.active {
+            color: #555;
+            border-bottom-color: transparent;
+            outline: none;
+        }
+
+
+        .tab-content {
+            border: 1px solid #ddd;
+            margin-top: -1px;
+        }
+    </style-->
+    <style>
+        .tab-content {
+            border: 1px solid #ddd;
+            border-top: none;
+            padding: 10px 15px;
+            transition:all 400ms ease-in;
+            -webkit-transition:all 400ms ease-in;
+        }
+    </style>
+</head>
+<body ng-app="app">
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Tabset</h2>
+        </div>
+        <tabset>
+            <tab header="Tab 1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec nibh eget
+                justo facilisis finibus vitae sit amet erat. Nullam a rhoncus metus. Nam tempus sem
+                vitae neque aliquet bibendum. In quis interdum ex. Ut at metus in quam gravida
+                posuere. Maecenas pulvinar mi interdum semper tristique. In id purus nec massa
+                aliquet bibendum. Duis dapibus arcu quis turpis lobortis, sed tincidunt massa
+                bibendum. Donec quis eleifend metus, quis porta elit. Cras et porta mauris.
+                Nam dignissim tortor magna, sit amet condimentum nulla laoreet non. Vestibulum ante
+                ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis
+                euismod, lorem eget maximus eleifend, quam massa consectetur massa, pharetra
+                ultricies ante massa consequat nisl. Aenean sed nibh sit amet ligula faucibus
+                gravida faucibus ac felis. Donec ut neque massa. Suspendisse potenti.
+            </tab>
+            <tab header="Tab 2">
+                Another tab
+            </tab>
+        </tabset>
+
+        <div class="page-header">
+            <h2>AT Tabs</h2>
+        </div>
+        <tabs></tabs>
+
+        <div class="page-header">
+            <h2>Tabs Original</h2>
+        </div>
+
+        <div class="tabs" ng-controller="TabsController as vm">
+            <ul class="nav nav-tabs">
+                <li ng-class="{active:vm.isActive(1)}">
+                    <a href="#" ng-click="vm.makeShift(1)">Tab 1</a>
+                </li>
+                <li ng-class="{active:vm.isActive(2)}">
+                    <a href="#" ng-click="vm.makeShift(2)">Tab 2</a>
+                </li>
+                <li ng-class="{active:vm.isActive(3)}">
+                    <a href="#" ng-click="vm.makeShift(3)">Tab 3</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div ng-show="vm.isActive(1)">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec nibh eget justo facilisis finibus vitae sit amet erat. Nullam a rhoncus metus. Nam tempus sem vitae neque aliquet bibendum. In quis interdum ex. Ut at metus in quam gravida posuere. Maecenas pulvinar mi interdum semper tristique. In id purus nec massa aliquet bibendum. Duis dapibus arcu quis turpis lobortis, sed tincidunt massa bibendum. Donec quis eleifend metus, quis porta elit. Cras et porta mauris. Nam dignissim tortor magna, sit amet condimentum nulla laoreet non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis euismod, lorem eget maximus eleifend, quam massa consectetur massa, pharetra ultricies ante massa consequat nisl. Aenean sed nibh sit amet ligula faucibus gravida faucibus ac felis. Donec ut neque massa. Suspendisse potenti.
+                </div>
+                <div ng-show="vm.isActive(2)">
+                    Käytännön täytyy turvautua tarkoituksenmukaisiin keinoihin, jos suurelle yleisölle vielä varsin tuntematon vaatimusmäärittely rauhoittaa hyvinvoivan yhteiskunnan rinnalle muodostuneita epäkohtia.
+                </div>
+                <div ng-show="vm.isActive(3)">
+                    Content 3
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+
+    <script>
+        var app = angular.module('app', []);
+        app.controller('TabsController', function () {
+            var vm = this;
+            vm.activeTab = 1;
+            vm.isActive = isActive;
+            vm.makeShift = makeShift;
+
+            /////////////////////////
+
+            function isActive (f) {
+                return (f === vm.activeTab);
+            }
+
+            function makeShift (e) {
+                vm.activeTab = e;
+            }
+        });
+        app.directive('showTab', function () {
+            return {
+                link: function (scope, element, attrs) {
+                    element.click(function (e) {
+                        e.preventDefault();
+                        $(element).tab('show');
+                    });
+                }
+            };
+        });
+
+        app.directive('tabs', function () {
+            function TabController () {
+                var vm = this;
+                vm.activeTab = 0;
+                vm.isActive = function (tab) {
+                    return (tab === vm.activeTab);
+                };
+                vm.activateTab = function (tab) {
+                    vm.activeTab = tab;
+                };
+                vm.tabs = ['Tab 1', 'Tab 2', 'Tab 3'];
+            }
+
+            return {
+                template: [
+                    '<div class="tabs">',
+                    '  <ul class="nav nav-tabs">',
+                    '    <li ng-repeat="t in vm.tabs" ng-class="{active:vm.activeTab==$index}">',
+                    '      <a href="" ng-click="vm.activateTab($index)">{{t}}</a>',
+                    '    </li>',
+                    '  </ul>',
+                    '  <div class="tab-content">',
+                    '  </div>',
+                    '</div>'
+                ].join(''),
+                scope: {},
+                controller: TabController,
+                controllerAs: 'vm',
+                bindToController: true
+            };
+        });
+
+        app.directive('tabset', function () {
+            return {
+                restrict: 'E',
+                transclude: true,
+                scope: {},
+                template: [
+                    '<div role="tabpanel">',
+                    '  <ul class="nav nav-tabs" role="tablist">',
+                    '    <li role="presentation"',
+                               'ng-repeat="tab in tabset.tabs"',
+                               'ng-class="{active: tab.active}">',
+                           '<a href="" role="tab"',
+                               'ng-click="tabset.select(tab)">',
+                               '{{tab.header}}',
+                           '</a>',
+                    '    </li>',
+                    '  </ul>',
+                    '  <ng-transclude></ng-transclude>',
+                    '</div>'
+                ].join(''),
+                bindToController: true,
+                controllerAs: 'tabset',
+                controller: function () {
+                    var self = this;
+                    self.tabs = [];
+                    self.addTab = function (tab) {
+                        self.tabs.push(tab);
+
+                        if (self.tabs.length === 1) {
+                            tab.active = true;
+                        }
+                    };
+                    self.select = function (selectedTab) {
+                        angular.forEach(self.tabs, function (tab) {
+                            if (tab.active && tab !== selectedTab) {
+                                tab.active = false
+                            }
+                        });
+                        selectedTab.active = true;
+                    }
+                }
+            };
+        });
+
+        app.directive('tab', function () {
+            return {
+                restrict: 'E',
+                transclude: true,
+                template: '<div role="tabpanel" ng-show="active" ng-transclude></div>',
+                require: '^tabset',
+                scope: {
+                    header: '@'
+                },
+                link: function (scope, elem, attr, tabsetCtrl) {
+                    scope.active = false;
+                    tabsetCtrl.addTab(scope);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
