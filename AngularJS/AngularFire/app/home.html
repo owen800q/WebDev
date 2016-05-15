@@ -1,35 +1,29 @@
 <div class="page-header">
-    <h1>AngularFire Demo</h1>
+    <h1>Luka's Resources</h1>
 </div>
 
 <div class="container">
-    <h1>{{vm.message}}</h1>
 
     <ul id="snippets" class="">
-        <li ng-repeat="snippet in vm.snippets">
-            <strong class="">{{ snippet.language }}</strong>
-            {{ snippet.description }}
+        <li ng-repeat="link in vm.links">
+            <a href="{{link.url}}">{{ link.title }}</a>
         </li>
     </ul>
-    
-    <form novalidate name="frm" role="form" ng-submit="vm.addSnippet()">
+
+    <form novalidate name="frm" role="form" ng-submit="vm.addLink()">
         <div class="form-group">
-            <label>Language</label>
-            <input type="text" class="form-control" ng-model="vm.snippet.language" required minlength="3">
+            <label>Name</label>
+            <input type="text" class="form-control" ng-model="vm.link.title" required minlength="3">
         </div>
         <div class="form-group">
-            <label>Description</label>
-            <input type="text" class="form-control" ng-model="vm.snippet.description" required minlength="10">
-        </div>        
-        <div class="form-group">
-            <label>Code</label>
-            <textarea class="form-control" ng-model="vm.snippet.code" required></textarea>
+            <label>Url</label>
+            <input type="url" class="form-control" ng-model="vm.link.url" required>
         </div>
-    
+
         <button type="submit" class="btn btn-success" ng-disabled="frm.$invalid">
-            Add <i class="fa fa-search"></i>
+            Add <i class="fa fa-plus"></i>
         </button>
-    </form>    
+    </form>
 </div>
 
 
